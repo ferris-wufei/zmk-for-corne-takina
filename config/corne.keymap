@@ -13,6 +13,13 @@
 #define RAISE 2
 #define ADJUST 3
 
+&sk { quick-release; };
+
+&lt {
+    flavor = "hold-preferred";
+    quick-tap-ms = <180>;
+};
+
 / {
     behaviors {
         tp: tap_preferred {
@@ -56,14 +63,7 @@
 
     // Activate ADJUST layer by pressing raise and lower
 
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-
-        adjust_layer {
-            if-layers = <1 2>;
-            then-layer = <3>;
-        };
-    };
+    conditional_layers { compatible = "zmk,conditional-layers"; };
 
     combos {
         compatible = "zmk,combos";
@@ -133,10 +133,10 @@
             //                    | GUI | LWR | ALT/ENT |   | HYPER/SPC | BKSP  | RSE |
 
             bindings = <
-&kp ESCAPE    &kp Q       &kp W           &kp E         &kp R             &kp T          &kp Y          &kp U              &kp I        &kp O            &kp P                    &kp BACKSPACE
-&kp LEFT_ALT  &hr LGUI A  &hr LEFT_ALT S  &hr LCTRL D   &hr LEFT_SHIFT F  &kp G          &kp H          &hr RIGHT_SHIFT J  &hr RCTRL K  &hr RIGHT_ALT L  &hr RIGHT_GUI SEMICOLON  &kp SINGLE_QUOTE
-&kp LCTRL     &kp Z       &kp X           &kp C         &kp V             &kp B          &kp N          &kp M              &kp COMMA    &kp DOT          &kp FSLH                 &kp CAPSLOCK
-                                          &kp LEFT_GUI  &lthp 2 SPACE     &lthp 1 TAB    &lthp 1 ENTER  &lthp 2 BACKSPACE  &sftcap
+&kp ESCAPE    &kp Q  &kp W  &kp E         &kp R          &kp T          &kp Y          &kp U              &kp I      &kp O    &kp P          &kp BACKSPACE
+&kp LEFT_ALT  &kp A  &kp S  &kp D         &kp F          &kp G          &kp H          &kp J              &kp K      &kp L    &kp SEMICOLON  &kp SINGLE_QUOTE
+&kp LCTRL     &kp Z  &kp X  &kp C         &kp V          &kp B          &kp N          &kp M              &kp COMMA  &kp DOT  &kp FSLH       &kp CAPSLOCK
+                            &kp LEFT_GUI  &lthp 2 SPACE  &lthp 1 TAB    &lthp 1 ENTER  &lthp 2 BACKSPACE  &sftcap
             >;
         };
 
@@ -148,10 +148,10 @@
             //                     | GUI |     | ALT/ENT |   | HYPER/SPACE | BKSP |    |
 
             bindings = <
-&trans  &kp N1    &kp N2    &kp N3     &kp N4     &kp N5     &kp N6          &kp N7         &kp N8        &kp N9         &kp N0    &kp GRAVE
-&trans  &kp LGUI  &kp LALT  &kp LCTRL  &kp LSHFT  &kp ESC    &kp LEFT_ARROW  &kp DOWN       &kp UP_ARROW  &kp RIGHT      &kp HOME  &trans
-&trans  &kp F1    &kp F2    &kp F3     &kp F4     &kp F12    &kp LG(LEFT)    &kp PAGE_DOWN  &kp PAGE_UP   &kp RG(RIGHT)  &kp END   &trans
-                            &trans     &trans     &trans     &trans          &trans         &trans
+&trans  &kp N1        &kp N2        &kp N3     &kp N4          &kp N5     &kp N6          &kp N7        &kp N8            &kp N9         &kp N0  &trans
+&trans  &sk LEFT_GUI  &sk LEFT_ALT  &sk LCTRL  &sk LEFT_SHIFT  &kp ESC    &kp LEFT_ARROW  &kp DOWN      &kp UP_ARROW      &kp RIGHT      &trans  &trans
+&trans  &kp F1        &kp F2        &kp F3     &kp F4          &kp F12    &kp LG(LEFT)    &kp LG(DOWN)  &kp LG(UP_ARROW)  &kp RG(RIGHT)  &trans  &trans
+                                    &trans     &trans          &trans     &trans          &trans        &trans
             >;
         };
 
@@ -164,7 +164,7 @@
 
             bindings = <
 &trans  &kp EXCL        &kp AT    &kp HASH       &kp DLLR   &kp PRCNT          &kp CARET  &kp AMPS   &kp ASTERISK  &kp LPAR  &kp RPAR           &trans
-&trans  &kp LGUI        &kp LALT  &kp LCTRL      &kp LSHFT  &kp ESC            &kp PLUS   &kp MINUS  &kp GRAVE     &kp PIPE  &kp APOS           &trans
+&trans  &sk LGUI        &sk LALT  &sk LCTRL      &sk LSHFT  &kp ESC            &kp PLUS   &kp MINUS  &kp GRAVE     &kp PIPE  &kp APOS           &trans
 &trans  &kp LEFT_BRACE  &kp LBKT  &kp LG(LA(C))  &kp RBKT   &kp RIGHT_BRACE    &kp EQUAL  &kp UNDER  &kp TILDE     &kp BSLH  &kp DOUBLE_QUOTES  &trans
                                   &trans         &trans     &trans             &trans     &trans     &trans
             >;
